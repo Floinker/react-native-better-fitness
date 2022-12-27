@@ -3,7 +3,7 @@ import { StyleSheet, TextInput } from "react-native";
 import { View } from "react-native";
 import ModalSelector from "react-native-modal-selector";
 
-function GenderPickerComponent() {
+function GenderPickerComponent({ getGender }) {
   const items = [
     { key: "male", label: "Männlich" },
     { key: "female", label: "Weiblich" },
@@ -17,8 +17,8 @@ function GenderPickerComponent() {
       <ModalSelector
         data={items}
         onChange={(option) => {
+          getGender(option.key);
           setSelectedItem(option.label);
-          console.log(selectedItem);
         }}
       >
         <TextInput

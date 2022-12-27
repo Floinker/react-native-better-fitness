@@ -3,7 +3,7 @@ import DatePicker from "react-native-date-picker";
 import { useState } from "react";
 import { format } from "date-fns";
 
-function ModalDatePickerComponent() {
+function ModalDatePickerComponent({ getDateOfBirth }) {
   const [date, setDate] = useState(new Date());
   const [open, setOpen] = useState(false);
 
@@ -20,6 +20,7 @@ function ModalDatePickerComponent() {
         onConfirm={(date) => {
           setOpen(false);
           setDate(date);
+          getDateOfBirth(format(date, "yyyy-MM-dd"));
         }}
         onCancel={() => {
           setOpen(false);
