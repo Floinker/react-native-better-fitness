@@ -8,8 +8,10 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/art": "^1.2.0",
     "@react-native-community/datetimepicker": "^6.7.1",
     "@react-native-picker/picker": "^2.4.8",
+    "@react-navigation/bottom-tabs": "^6.5.2",
     "@react-navigation/native": "^6.1.1",
     "@react-navigation/native-stack": "^6.9.7",
     "date-fns": "^2.29.3",
@@ -20,6 +22,7 @@
     "react-native": "0.70.5",
     "react-native-date-picker": "^4.2.6",
     "react-native-modal-selector": "^2.1.2",
+    "react-native-pie-chart": "^2.1.0",
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
     "react-native-sqlite-storage": "^6.0.1",

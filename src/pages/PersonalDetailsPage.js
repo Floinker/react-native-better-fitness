@@ -24,17 +24,6 @@ function PersonalDetailsPage() {
   const [gender, setGender] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState("");
 
-  const getGender = (selectedGender) => {
-    if (selectedGender) {
-      setGender(selectedGender);
-    }
-  };
-  const getDateOfBirth = (selectedDate) => {
-    if (selectedDate) {
-      setDateOfBirth(selectedDate);
-    }
-  };
-
   const insertUserAndHealthInfo = (
     name,
     gender,
@@ -92,12 +81,12 @@ function PersonalDetailsPage() {
         </View>
         <View style={styles.inputContainer}>
           <Text style={styles.textLabel}>Geschlecht</Text>
-          <GenderPickerComponent getGender={getGender} />
+          <GenderPickerComponent getGender={setGender} />
         </View>
 
         <View style={styles.inputContainer}>
           <Text style={styles.textLabel}>Geburtsdatum</Text>
-          <ModalDatePickerComponent getDateOfBirth={getDateOfBirth} />
+          <ModalDatePickerComponent getDateOfBirth={setDateOfBirth} />
         </View>
 
         <View style={styles.inputContainer}>

@@ -1,16 +1,15 @@
 import Icon from "react-native-vector-icons/FontAwesome";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import PersonalDetailsPage from "./src/pages/PersonalDetailsPage";
 import { openDatabase } from "react-native-sqlite-storage";
 import { useEffect } from "react";
 import {
   CREATE_HEALTH_INFO_TABLE_STATEMENT,
   CREATE_USER_TABLE_STATEMENT,
 } from "./assets/sql/DBSetup";
-import HomePage from "./src/pages/HomePage";
 import { navigationRef } from "./src/util/RootNavigation";
-import * as RootNavigation from "./src/util/RootNavigation";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import MacroPage from "./src/pages/MacroPage";
+import HomePageNav from "./src/pages/HomePageNav";
 
 var db = openDatabase({ name: "HealthDB.db" });
 
@@ -68,24 +67,25 @@ export default function App() {
 
   return (
     <NavigationContainer ref={navigationRef}>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Übersicht"
-          component={HomePage}
+      <Tab.Navigator>
+        <Tab.Screen
+          name="Home"
+          component={HomePageNav}
           options={{
-            headerRight: () => (
-              <Icon
-                name="user"
-                size={25}
-                onPress={() => RootNavigation.push("Gesundheitsinfos", {})}
-              />
-            ),
+            headerShown: false,
+            tabBarIcon: () => <Icon name="home" size={25} />,
           }}
         />
-        <Stack.Screen name="Gesundheitsinfos" component={PersonalDetailsPage} />
-      </Stack.Navigator>
+        <Tab.Screen
+          name="Markos"
+          component={MacroPage}
+          options={{
+            tabBarIcon: () => <Icon name="pie-chart" size={25} />,
+          }}
+        />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
